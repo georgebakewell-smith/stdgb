@@ -48,3 +48,17 @@ void gb_llist_print(node *head)
     }
     printf("NULL\n");
 }
+
+int gb_llist_length(node *head)
+{
+    int length = 1;
+    node *current = head;
+    while(current->next != NULL)
+    {
+        ++length;
+        current = current->next;
+    }
+
+    return length;
+
+}
