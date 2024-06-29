@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "../lnklist.h"
 
-node *gb_create_node()
+node *gb_node_create()
 {
 
     node *head = (node*)malloc(sizeof(node));
@@ -12,7 +12,7 @@ node *gb_create_node()
     return head;
 }
 
-void gb_free_list(node *head)
+void gb_llist_free(node *head)
 {
     node *current = head;
     node *previous = NULL;
@@ -27,18 +27,18 @@ void gb_free_list(node *head)
     free(current);
 }
 
-void gb_append(node *head, int x)
+void gb_llist_append(node *head, int x)
 {
     node *current = head;
     while(current->next != NULL)
     {
         current = current->next;
     }
-    current->next = gb_create_node();
+    current->next = gb_node_create();
     current->next->data = x;
 }
 
-void gb_print_list(node *head)
+void gb_llist_print(node *head)
 {
     node *current = head;
     while(current != NULL)

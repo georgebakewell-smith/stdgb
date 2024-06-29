@@ -9,9 +9,9 @@ typedef struct Node
 
 }node;
 
-node *gb_create_node();
-void gb_free_list(node *head);
-void gb_append(node *head, int x);
-void gb_print_list(node *head);
+node *gb_node_create();
+void gb_llist_free(node *head);
+void gb_llist_append(node *head, int x);
+void gb_llist_print(node *head);
 
 #endif
