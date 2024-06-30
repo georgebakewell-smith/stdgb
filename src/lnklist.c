@@ -4,7 +4,6 @@
 
 node *gb_node_create()
 {
-
     node *head = (node*)malloc(sizeof(node));
     head->data = 0;
     head->next = NULL;
@@ -61,4 +60,50 @@ int gb_llist_length(node *head)
 
     return length;
 
+}
+
+void gb_llist_insert(node *head, int position, int data)
+{
+    if(head == NULL)
+    {
+        printf("Error in gb_llist_insert() : head pointer is NULL\n");
+
+        return;
+    }
+
+    int index = 0;
+    node *current = head, *new = gb_node_create();
+    if(position == 0)
+    {      
+        new->data = head->data;      
+        new->next = head->next;      
+        head->data = data;      
+        head->next = new;
+        
+        return;
+    }
+
+    while(current->next != NULL)
+    {
+        if(index + 1 == position)
+        {
+            new->next = current->next;
+            new->data = data;
+            current->next = new;
+
+            return;
+        }else
+        {
+            current = current->next;
+            ++index;
+        }
+    }
+    if(index + 1 < position)
+    {
+        printf("Error in gb_llist_insert() : position is larger than length of linked list\n");
+
+        return;
+    }
+    new->data = data;
+    current->next = new;
 }

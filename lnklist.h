@@ -14,5 +14,6 @@ void gb_llist_free(node *head);
 void gb_llist_append(node *head, int x);
 void gb_llist_print(node *head);
 int gb_llist_length(node *head);
+void gb_llist_insert(node *head, int position, int data);
 
 #endif
