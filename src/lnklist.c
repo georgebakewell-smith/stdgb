@@ -107,3 +107,40 @@ void gb_llist_insert(node *head, int position, int data)
     new->data = data;
     current->next = new;
 }
+
+int *gb_llist_get(node *head, int position)
+{
+    node *current = head;
+    int index = 0;
+
+    if(head == NULL)
+    {
+        printf("Error in gb_llist_get() : head pointer is NULL\n");
+
+        return NULL;
+    }    
+
+    if(position == 0)
+    {
+        return &head->data;
+    }
+
+    while(current->next != NULL)
+    {
+        if(index == position)
+        {
+            return &current->data;
+        }else{
+            ++index;
+            current = current->next;
+        }
+    }
+
+    if(index < position)
+    {
+        printf("Error in gb_llist_get() : position is larger than length of linked list\n");
+
+        return NULL;
+    }
+    return &current->data;
+}
