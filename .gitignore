@@ -1,6 +1,9 @@
 # Test files
 main.c
 
+# Config files
+*.json
+
 # Prerequisites
 *.d
 
