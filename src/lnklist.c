@@ -144,3 +144,50 @@ int *gb_llist_get(node *head, int position)
     }
     return &current->data;
 }
+
+void gb_llist_delete(node *head, int position)
+{
+    node *current = head, *temp = NULL;
+    int index = 0;
+
+    if(head == NULL)
+    {
+        printf("Error in gb_llist_delete() : head pointer is NULL\n");
+
+        return;
+    }
+
+    if(position == 0)
+    {
+        head->data = head->next->data;
+        temp = head->next;
+        head->next = head->next->next;
+        free(temp);
+
+        return;
+    }
+
+    while(current->next != NULL)
+    {
+        if(index + 1 == position)
+        {
+            temp = current->next;
+            current->next = current->next->next;
+            free(temp);
+
+            return;
+        }else{
+            ++index;
+            current = current->next;
+        }
+    }
+    if(index < position)
+    {
+        printf("Error in gb_llist_delete() : position is larger than length of linked list\n");
+
+        return;
+    }
+
+    free(current);
+
+}
